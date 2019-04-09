@@ -2,7 +2,9 @@
   <div>
     <Header title="发放列表"></Header>
     <div class="toolbox">
-      <van-search placeholder="套餐名称，手机号" v-model="value" class="search" style="padding:0;"/>
+      <van-search show-action placeholder="套餐名称，手机号" v-model="value" class="search" style="padding:0;">
+        <div slot="action" style="line-height:24px;" @click="onSearch">搜索</div>
+      </van-search>
       <div class="right" @click="setType">
         <span>{{ type[0] }}</span>
         <img :src="arrow" alt="" />
@@ -71,7 +73,8 @@ export default {
     },
     toComboDetail(id) {
       this.$router.push({ name: "comboDetail" });
-    }
+    },
+    onSearch() {}
   }
 };
 </script>

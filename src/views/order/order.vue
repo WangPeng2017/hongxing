@@ -11,7 +11,9 @@
       <div class="toolBox">
         <div class="tool">
           <span class="date" @click="chooseDate(format)">{{ date }}</span>
-          <van-search placeholder="搜索订单编号或付款账户" v-model="value" style="width:180px; padding: 0; margin-right: 10px; display: inline-block; float:right;" />
+          <van-search show-action placeholder="搜索订单编号或付款账户" v-model="value" style="width:180px; padding: 0; margin-right: 10px; display: inline-block; float:right;">
+            <div slot="action" style="line-height:24px;" @click="onSearch">搜索</div>
+          </van-search>
         </div>
       </div>
     </section>
@@ -127,7 +129,8 @@ export default {
       } else {
         this.$router.push({ name: "orderDetail2" });
       }
-    }
+    },
+    onSearch() {}
   }
 };
 </script>

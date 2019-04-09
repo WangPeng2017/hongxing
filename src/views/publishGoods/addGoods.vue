@@ -30,7 +30,9 @@
       <Model :show="isShowChooseBrand" @closeModel="closeModel">
         <template>
           <div class="toolbox">
-            <van-search placeholder="请输入品牌名称" v-model="value" style="width: 60%;display: inline-block;padding: 0;" />
+            <van-search show-action placeholder="请输入品牌名称" v-model="value" style="width: 60%;display: inline-block;padding: 0;">
+              <div slot="action" style="line-height:24px;" @click="onSearch">搜索</div>
+            </van-search>
             <span v-if="hasChecked" style="border: 0;margin: 0;float:right; color: #fff;background:rgba(255,0,54,1);padding: 6px 10px; font-size:12px; border-radius:3px;">确定</span>
             <span v-if="!hasChecked" style="border: 0;margin: 0;float:right; color: #999999;background:rgba(247,247,247,1);padding: 6px 10px; font-size:12px; border-radius:3px;">取消</span>
           </div>
@@ -95,7 +97,8 @@ export default {
     },
     submitGoods() {
       this.$router.push({ name: "goodsDetail" });
-    }
+    },
+    onSearch() {}
   }
 };
 </script>

@@ -31,7 +31,10 @@
     <Model :show="isShowModel " @closeModel="closeModel ">
       <template>
         <div class="toolbox">
-          <van-search placeholder="请输入商品名称 " v-model="value " style="width: 60%; float: left;padding: 0; " />
+          <van-search show-action placeholder="请输入商品名称 " v-model="value " style="width: 60%; float: left;padding: 0; ">
+            <div slot="action" style="line-height:24px;" @click="onSearch">搜索</div>
+          </van-search>
+
           <span style="border: 0;margin: 0;float:right; color: #fff;background:rgba(255,0,54,1);border-radius:3px;padding: 6px 10px;font-size: 12px; ">确定</span>
         </div>
         <div class="contentbox ">
@@ -86,7 +89,7 @@ export default {
         mostAddShopNum: 11,
         mostBuyNum: 11,
         mostAddGoodsNum: 11,
-        discount: [5,8],
+        discount: [5, 8],
         content:
           "360趋势是以360产品海量用户数据为基础的大数据展示平台,可通过搜 索关键词,快速获取热度趋势、理解用户真实需求、"
       },
@@ -122,7 +125,8 @@ export default {
     },
     closeModel() {
       this.isShowModel = false;
-    }
+    },
+    onSearch() {}
   }
 };
 </script>

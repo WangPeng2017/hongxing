@@ -10,7 +10,9 @@
         <tab-item @on-item-click="getData(0)" selected>已审核</tab-item>
         <tab-item @on-item-click="getData(1)">待审核</tab-item>
       </tab>
-      <van-search :placeholder="placeholder" @search="onSearch" v-model="value"/>
+      <van-search show-action :placeholder="placeholder" @search="onSearch" v-model="value">
+        <div slot="action" style="line-height:24px;" @click="onSearch">搜索</div>
+      </van-search>
       <div class="section-box">
         <swipeout>
           <swipeout-item v-for="n in 10" :key="n" @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow">
@@ -68,7 +70,7 @@ export default {
     getData(index) {
       console.log(index);
     },
-    onSearch(value){
+    onSearch(value) {
       console.log(value);
     },
     onButtonClick(type) {
@@ -77,12 +79,13 @@ export default {
     handleEvents(type) {
       console.log("event: ", type);
     },
-    toDetail(id){
+    toDetail(id) {
       this.$router.push({ name: "goodsDetail" });
     },
     submitGoods() {
       this.$router.push({ name: "chooseClassify1" });
-    }
+    },
+    onSearch() {}
   }
 };
 </script>
@@ -110,7 +113,7 @@ export default {
     position: absolute;
     width: 100%;
     bottom: 0;
-    top:85px;
+    top: 85px;
     overflow-y: auto;
   }
 

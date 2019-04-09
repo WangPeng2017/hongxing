@@ -33,7 +33,9 @@
     <Model :show="isShowModel " @closeModel="closeModel ">
       <template>
         <div class="toolbox">
-          <van-search placeholder="请输入商品名称 " v-model="value " style="width: 60%; float: left;padding: 0; " />
+          <van-search show-action placeholder="请输入商品名称 " v-model="value " style="width: 60%; float: left;padding: 0; ">
+            <div slot="action" style="line-height:24px;" @click="onSearch">搜索</div>
+          </van-search>
           <span style="border: 0;margin: 0;float:right; color: #fff;background:rgba(255,0,54,1);border-radius:3px;padding: 6px 10px;font-size: 12px;">确定</span>
         </div>
         <div class="contentbox ">
@@ -121,6 +123,9 @@ export default {
     },
     closeModel() {
       this.isShowModel = false;
+    },
+    onSearch(){
+
     }
   }
 };

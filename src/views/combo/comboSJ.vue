@@ -10,7 +10,7 @@
       </tab>
       <div class="section-box">
         <swipeout>
-          <swipeout-item v-for="n in 3" :key="n" @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" class="swipeout-item">
+          <swipeout-item @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" class="swipeout-item">
             <div slot="right-menu">
               <swipeout-button @click.native="onButtonClick('fav', 11)" :width="40" style="background:#FF0036;">修改</swipeout-button>
               <swipeout-button @click.native="onButtonClick('delete', 22)" :width="40" style="background:#999;">下架</swipeout-button>
@@ -30,7 +30,33 @@
                 <p class="line3">
                   <span class="date">有效期 : 2019-9-23</span>
                   <span class="isExpired">是否过期 : 否</span>
-                  <span class="toDetail" @click="toDetail(1)">详情></span>
+                  <span class="toDetail" @click="toDetail('购物卡',1)">详情></span>
+                </p>
+
+              </div>
+            </div>
+          </swipeout-item>
+          <swipeout-item @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" class="swipeout-item">
+            <div slot="right-menu">
+              <swipeout-button @click.native="onButtonClick('fav', 11)" :width="40" style="background:#FF0036;">修改</swipeout-button>
+              <swipeout-button @click.native="onButtonClick('delete', 22)" :width="40" style="background:#999;">下架</swipeout-button>
+            </div>
+            <div slot="content" class="card vux-1px-t">
+              <img :src="defaultGoods" alt="" />
+              <div class="right">
+                <p class="line1">
+                  <span class="money">￥300.00</span>
+                  <span class="sales">累计销量 : 23</span>
+                  <span class="state">审核状态 : 待审核</span>
+                </p>
+                <p class="line2">
+                  <span class="cardType">服务卡</span>
+                  <span class="isSales">是否上架 : 是</span>
+                </p>
+                <p class="line3">
+                  <span class="date">有效期 : 2019-9-23</span>
+                  <span class="isExpired">是否过期 : 否</span>
+                  <span class="toDetail" @click="toDetail('服务卡',1)">详情></span>
                 </p>
 
               </div>
@@ -84,8 +110,12 @@ export default {
     submitCard() {
       this.$router.push({ name: "addSJCard" });
     },
-    toDetail(id){
-       this.$router.push({ name: "sureSJCardDetail" });
+    toDetail(type, id) {
+      if (type == "购物卡") {
+        this.$router.push({ name: "sureSJCardDetail" });
+      } else {
+        this.$router.push({ name: "sureSJCardDetail" });
+      }
     }
   }
 };
