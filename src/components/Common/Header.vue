@@ -80,7 +80,7 @@ export default {
   position: absolute;
   top: 14px;
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 21px;
   color: @header-text-color;
 }

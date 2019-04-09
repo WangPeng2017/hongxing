@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header title="订单管理"></Header>
-    <section style="position:absolute; top: 44px; left: 0; right: 0;overflow:auto;">
+    <section class="section">
       <tab :line-width="2" default-color="#000000" active-color="#ff0000" bar-active-color="#ff0000" custom-bar-width="50px">
         <tab-item @on-item-click="getData(0)" selected>订单</tab-item>
         <tab-item @on-item-click="getData(1)">未发货</tab-item>
@@ -11,12 +11,11 @@
       <div class="toolBox">
         <div class="tool">
           <span class="date" @click="chooseDate(format)">{{ date }}</span>
-          <van-search placeholder="搜索订单编号或付款账户" v-model="value" style="width:180px; padding: 0; display: inline-block;" />
-          <span class="total">共计￥12345678998.00</span>
+          <van-search placeholder="搜索订单编号或付款账户" v-model="value" style="width:180px; padding: 0; margin-right: 10px; display: inline-block; float:right;" />
         </div>
       </div>
     </section>
-    <section style="padding: 0 9px;position:absolute; top: 130px; bottom: 0; left: 0; right: 0;overflow:auto;">
+    <section class="section2">
       <div class="list-item">
         <div class="item-title">
           <img :src="defaultGoods" alt="" class="title-img">
@@ -95,7 +94,7 @@ export default {
       date: formatDate(new Date(), this.format || "YYYY-MM"),
       format: "YYYY-MM",
       value: "",
-      state: 0,
+      state: 1,
       defaultGoods: require("Assets/img/defaultGoods.png")
     };
   },
@@ -134,139 +133,157 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.toolBox {
-  padding: 0px 9px;
-  margin-top: 7px;
-  .tool {
-    background: #fff;
-    padding: 5px 0px;
-    line-height: 24px;
-    .date {
-      background: rgba(247, 247, 247, 1);
-      border-radius: 2px;
-      padding: 5px 15px 5px 5px;
-      margin:  0px 0 0 10px;
-      font-size: 12px;
-      position: relative;
-      vertical-align: top;
-    }
-    .date:after {
-      content: " ";
-      display: inline-block;
-      height: 6px;
-      width: 6px;
-      border-width: 1px 1px 0 0;
-      border-color: #000;
-      border-style: solid;
-      -webkit-transform: rotate(135deg);
-      transform: rotate(135deg);
-      position: relative;
-      top: -2px;
-      position: absolute;
-      top: 50%;
-      margin-top: -4px;
-      right: 4px;
-    }
-    .total {
-      float: right;
-      padding-right: 5px;
-      font-size: 12px;
+.section {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  overflow: auto;
+
+  .toolBox {
+    padding: 0px 9px;
+    margin-top: 7px;
+    .tool {
+      background: #fff;
+      padding: 5px 0px;
+      line-height: 24px;
+      .date {
+        background: rgba(247, 247, 247, 1);
+        border-radius: 2px;
+        padding: 5px 15px 5px 5px;
+        margin: 0px 0 0 10px;
+        font-size: 12px;
+        position: relative;
+        vertical-align: top;
+      }
+      .date:after {
+        content: " ";
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        border-width: 1px 1px 0 0;
+        border-color: #000;
+        border-style: solid;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+        position: relative;
+        top: -2px;
+        position: absolute;
+        top: 50%;
+        margin-top: -4px;
+        right: 4px;
+      }
+      .total {
+        float: right;
+        padding-right: 5px;
+        font-size: 12px;
+      }
     }
   }
 }
-.list-item {
-  background: #fff;
-  padding: 7px 7px 10px 7px;
-  overflow: hidden;
+.section2 {
+  padding: 0 9px;
+  position: absolute;
+  top: 140px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
 
-  .item-title {
-    padding-bottom: 10px;
-    display: flex;
-    position: relative;
-    .title-img {
-      width: 55px;
-      height: 55px;
-    }
-    .right {
-      padding: 0 10px;
-      width: 100%;
+  .list-item {
+    background: #fff;
+    padding: 7px 7px 10px 7px;
+    overflow: hidden;
+
+    .item-title {
+      padding-bottom: 10px;
+      display: flex;
       position: relative;
-      .title-price {
-        font-size: 20px;
-        font-family: MicrosoftYaHei-Bold;
-        font-weight: bold;
-        color: rgba(0, 0, 0, 1);
-        position: absolute;
-        top: 10px;
-        line-height: 1;
+      .title-img {
+        width: 55px;
+        height: 55px;
       }
+      .right {
+        padding: 0 10px;
+        width: 100%;
+        position: relative;
+        .title-price {
+          font-size: 20px;
+          font-family: MicrosoftYaHei-Bold;
+          font-weight: bold;
+          color: rgba(0, 0, 0, 1);
+          position: absolute;
+          top: 10px;
+          line-height: 1;
+        }
 
-      .title-code {
-        font-size: 12px;
-        font-family: MicrosoftYaHei;
-        font-weight: 400;
-        color: rgba(102, 102, 102, 1);
-        position: absolute;
-        bottom: 10px;
-      }
+        .title-code {
+          font-size: 12px;
+          font-family: MicrosoftYaHei;
+          font-weight: 400;
+          color: rgba(102, 102, 102, 1);
+          position: absolute;
+          bottom: 10px;
+        }
 
-      .title-toDetail {
-        font-size: 12px;
-        font-family: MicrosoftYaHei;
-        font-weight: 400;
-        color: rgba(153, 153, 153, 1);
-        position: absolute;
-        right: 0;
-        bottom: 20px;
+        .title-toDetail {
+          font-size: 12px;
+          font-family: MicrosoftYaHei;
+          font-weight: 400;
+          color: rgba(153, 153, 153, 1);
+          position: absolute;
+          right: 0;
+          bottom: 20px;
+        }
       }
     }
-  }
 
-  .item-title:after {
-    content: " ";
-    position: absolute;
-    left: 0px;
-    bottom: 0;
-    right: 0px;
-    height: 1px;
-    border-top: 1px solid #d9d9d9;
-    color: #d9d9d9;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
-  }
+    .item-title:after {
+      content: " ";
+      position: absolute;
+      left: 0px;
+      bottom: 0;
+      right: 0px;
+      height: 1px;
+      border-top: 1px solid #d9d9d9;
+      color: #d9d9d9;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
 
-  .item-content {
-    font-size: 12px;
-    line-height: 1.5;
-    text-align: left;
-    font-family: MicrosoftYaHei;
-    font-weight: 400;
-    color: rgba(102, 102, 102, 1);
-    .content-msg {
-      margin-top: 7px;
-      .content-left,
-      .content-right {
-        width: 18%;
-        display: inline-block;
-        vertical-align: top;
-      }
-      .content-right {
-        width: 79%;
-      }
+    .item-content {
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: left;
+      font-family: MicrosoftYaHei;
+      font-weight: 400;
+      color: rgba(102, 102, 102, 1);
+      .content-msg {
+        margin-top: 7px;
+        .content-left,
+        .content-right {
+          width: 18%;
+          display: inline-block;
+          vertical-align: top;
+        }
+        .content-right {
+          width: 79%;
+        }
 
-      .button1,
-      .button2 {
-        background: rgba(255, 0, 54, 1);
-        font-size: 12px;
-        font-family: MicrosoftYaHei;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 1);
-        padding: 3px 8px;
-      }
-      .button2 {
-        background: rgba(209, 209, 209, 1);
+        .button1,
+        .button2 {
+          background: rgba(255, 0, 54, 1);
+          font-size: 12px;
+          font-family: MicrosoftYaHei;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+          padding: 3px 8px;
+        }
+        .button2 {
+          background: rgba(209, 209, 209, 1);
+        }
       }
     }
   }

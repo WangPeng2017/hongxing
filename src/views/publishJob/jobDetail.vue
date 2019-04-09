@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header title="行业招聘"></Header>
-    <section class="section">
+    <section class="section" :style="isNewPublish ? {bottom: '45px'} : {bottom: '0'}">
       <div class="part1">
         <span class="job">机修工程师</span>
         <span class="company">爱惜车一店</span>
@@ -39,28 +39,41 @@
         <div class="title">福利待遇</div>
         <p>包吃住，每月工作28天，有两天休息时间，两天假期。</p>
         <div class="title">企业简介</div>
-        <p> 爱惜车快速洗车精致洗车镀晶打蜡贴膜换轮胎蒸汽洗车爱惜车快速洗车 精致洗车镀晶打蜡贴膜换轮胎蒸汽洗车</p>
+        <p> 爱惜车快速洗车精致洗车镀晶打蜡贴膜换轮胎蒸汽洗车爱惜车快速洗车爱惜车快速洗车精致洗车镀晶打蜡贴膜换轮胎蒸汽洗车爱惜车快速洗车爱惜车快速洗车精致洗车镀晶打蜡贴膜换轮胎蒸汽洗车爱惜车快速洗车 精致洗车镀晶打蜡贴膜换轮胎蒸汽洗车</p>
       </div>
     </section>
+    <x-button @click.native="sure" v-if="isNewPublish" type="warn" style="background: #FF0036; border-radius: 0; color:#fff; position:fixed;bottom:0;">确定</x-button>
   </div>
 </template>
 
 <script>
 import Header from "Common/Header";
+import { XButton } from "vux";
 export default {
   name: "PublishJob",
   components: {
-    Header
+    Header,
+    XButton
   },
   data() {
     return {
+      isNewPublish: 1,
       results: [],
       value: "",
       placeholder: "输入商品名称",
       goods: require("Assets/img/logo.png")
     };
   },
-  methods: {}
+  methods: {
+    sure() {
+      this.$router.push({ name: "publishJob" });
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (from.name === "publishJob") vm.isNewPublish = 0;
+    });
+  }
 };
 </script>
 
@@ -91,7 +104,7 @@ export default {
       font-size: 14px;
       font-family: MicrosoftYaHei;
       font-weight: bold;
-      color: rgba(0, 128, 255, 1);
+      color: rgb(255, 0, 54);
       margin-top: 12px;
     }
   }

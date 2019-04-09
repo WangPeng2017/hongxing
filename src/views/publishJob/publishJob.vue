@@ -18,7 +18,7 @@
               <swipeout-button @click.native="onButtonClick('fav')" :width="40" style="background:#DCDCDC;">修改</swipeout-button>
               <swipeout-button @click.native="onButtonClick('delete')" :width="40" style="background:#FF0036;">删除</swipeout-button>
             </div>
-            <div slot="content" class="job vux-1px-t">
+            <div slot="content" class="job vux-1px-t" @click="toDetail(1)">
               <p class="job-name">
                 汽修工程师
                 <span class="job-pay">薪资面议</span>
@@ -93,6 +93,9 @@ export default {
     },
     submitJob() {
       this.$router.push({ name: "addJobCondition" });
+    },
+    toDetail(id) {
+      this.$router.push({ name: "jobDetail" });
     }
   }
 };

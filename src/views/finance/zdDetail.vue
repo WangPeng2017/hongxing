@@ -11,7 +11,7 @@
       <div class="box">
         <x-table :cell-bordered="false" class="table">
           <tbody>
-            <tr v-for="n in 10" :key="n">
+            <tr v-for="n in 20" :key="n" @click="toDetail(1, 0)">
               <td>
                 <div class="td1">
                   <img class="headImg" :src="headImg" alt="">
@@ -68,6 +68,14 @@ export default {
           // console.log("plugin hide");
         }
       });
+    },
+    toDetail(type, id){
+      if(type){
+        this.$router.push({name: "orderDetail1"});
+      }else{
+        this.$router.push({name: "orderDetail2"});
+      }
+      
     }
   }
 };
@@ -137,6 +145,12 @@ export default {
     border-radius: 10px;
     text-align: left;
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 48px;
+    bottom: 20px;
+    left: 8px;
+    right: 8px;
+    overflow-y: auto;
 
     .table {
       margin-top: 10px;

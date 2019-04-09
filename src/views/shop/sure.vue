@@ -17,7 +17,7 @@
               </template>
               <van-radio checked-color="#FF0036" name="weixin" />
             </van-cell>
-            <van-cell clickable @click="payType = 'zhifubao'">
+            <!-- <van-cell clickable @click="payType = 'zhifubao'">
               <template slot="title">
                 <img :src="zhifubao" alt="" style="width: 24px;vertical-align: middle;" />
                 <span>支付宝</span>
@@ -30,7 +30,7 @@
                 <span>银行卡</span>
               </template>
               <van-radio checked-color="#FF0036" name="bankCard" />
-            </van-cell>
+            </van-cell> -->
           </van-cell-group>
         </van-radio-group>
       </div>

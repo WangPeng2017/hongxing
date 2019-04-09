@@ -18,7 +18,7 @@
               <swipeout-button @click.native="onButtonClick('fav')" :width="40" style="background:#DCDCDC;">修改</swipeout-button>
               <swipeout-button @click.native="onButtonClick('delete')" :width="40" style="background:#FF0036;">删除</swipeout-button>
             </div>
-            <div slot="content" class="goods vux-1px-t">
+            <div slot="content" class="goods vux-1px-t" @click="toDetail(1)">
               <img :src="goods" class="goods-img" alt="" />
               <div class="goods-box">
                 <p class="goods-title">白酒整箱特价茅台镇53度酱香型国酱1949纯粮食原浆礼盒酒 精致洗车深度洗车镀晶打蜡</p>
@@ -76,6 +76,9 @@ export default {
     },
     handleEvents(type) {
       console.log("event: ", type);
+    },
+    toDetail(id){
+      this.$router.push({ name: "goodsDetail" });
     },
     submitGoods() {
       this.$router.push({ name: "chooseClassify1" });

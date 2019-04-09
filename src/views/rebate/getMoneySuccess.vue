@@ -27,11 +27,13 @@ export default {
   },
   data() {
     return {
-      successLogo: require("Assets/img/weixin.png")
+      successLogo: require("Assets/img/weixin.png"),
     };
   },
   methods: {
-    sure() {}
+    sure() {
+      this.$router.push({ name: "rebate" });
+    }
   }
 };
 </script>

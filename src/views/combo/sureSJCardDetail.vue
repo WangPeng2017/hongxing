@@ -49,22 +49,25 @@
         </x-table>
       </div>
     </section>
+    <x-button @click.native="sure" v-if="isNewPublish" type="warn" style="background: #FF0036; border-radius: 0; color:#fff; position:fixed;bottom:0;">确定</x-button>
   </div>
 </template>
 
 <script>
 import Header from "Common/Header";
 import Card1 from "Common/Card1";
-import { XTable } from "vux";
+import { XTable, XButton } from "vux";
 export default {
   name: "sureSJCardDetail",
   components: {
     Header,
     Card1,
-    XTable
+    XTable,
+    XButton
   },
   data() {
     return {
+      isNewPublish: 1,
       isFWCard: sessionStorage.getItem("cardType") == "fw",
       data: {
         url: require("Assets/img/defaultGoods.png"),
@@ -96,7 +99,16 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    sure(){
+      this.$router.push({ name: "comboSJ" });
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (from.name === "comboSJ") vm.isNewPublish = 0;
+    });
+  }
 };
 </script>
 

@@ -26,6 +26,12 @@
           <span class="title">店铺详情：</span>
           <span class="content">精致洗车深度洗车镀晶打蜡内饰清洗四轮定位快速洗车</span>
         </p>
+        <p>
+          <span class="title">营业资质：</span>
+          <span class="content">
+            <img :src="logo" alt="" style="width: 150px;height:150px;border:1px solid #ccc;">
+          </span>
+        </p>
       </div>
     </section>
     <XButton class="button" @click.native="upLevel" style="background: #FF0036; border-radius: 0; color:#fff; position:fixed;bottom:0;">商户等级升级</XButton>
@@ -45,7 +51,7 @@ export default {
   data() {
     return {
       bg: require("Assets/img/main-bg.png"),
-      logo: require("Assets/img/logo.png"),
+      logo: require("Assets/img/logo.png")
     };
   },
   methods: {
@@ -113,12 +119,12 @@ export default {
     p {
       margin-bottom: 10px;
       overflow: hidden;
-      span{
+      span {
         float: left;
       }
-      .content{
+      .content {
         width: 75%;
-        padding:0;
+        padding: 0;
       }
     }
   }

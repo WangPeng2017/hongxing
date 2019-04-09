@@ -68,7 +68,8 @@
     <Model :show="showModel1" @closeModel="closeModel" :resetStyle="{width: '80%', height: '400px', top: '15%', padding: 0, borderRadius: '10px'}">
       <Header title="选择账户" :showBack="false">
         <span slot="left" style="color: #999999;padding:13px 5px;" @click="toEditeWXAccount">编辑</span>
-        <span slot="right" style="color: #FF0036;padding:13px 5px;" @click="sureGetMoney">确定</span>
+        <span slot="right" v-if="wxAccount" style="color: #FF0036;padding:13px 5px;" @click="sureGetMoney">确定</span>
+        <span slot="right" v-if="!wxAccount" style="color: #999999;padding:13px 5px;" @click="closeModel">X</span>
       </Header>
       <van-radio-group v-model="wxAccount" style="margin-top: 45px;">
         <swipeout>
@@ -93,7 +94,8 @@
     <Model :show="showModel2" @closeModel="closeModel" :resetStyle="{width: '80%', height: '400px', top: '15%', padding: 0, borderRadius: '10px'}">
       <Header title="选择账户" :showBack="false">
         <span slot="left" style="color: #999999;padding:13px 5px;" @click="toEditeBankAccount">编辑</span>
-        <span slot="right" style="color: #FF0036;padding:13px 5px;" @click="sureGetMoney">确定</span>
+        <span slot="right" v-if="bankAccount" style="color: #FF0036;padding:13px 5px;" @click="sureGetMoney">确定</span>
+        <span slot="right" v-if="!bankAccount" style="color: #999999;padding:13px 5px;" @click="closeModel">X</span>
       </Header>
       <van-radio-group v-model="bankAccount" style="margin-top: 45px;">
         <swipeout>

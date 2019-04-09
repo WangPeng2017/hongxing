@@ -30,7 +30,7 @@
                 <p class="line3">
                   <span class="date">有效期 : 2019-9-23</span>
                   <span class="isExpired">是否过期 : 否</span>
-                  <span class="toDetail">详情></span>
+                  <span class="toDetail" @click="toDetail(1)">详情></span>
                 </p>
 
               </div>
@@ -83,6 +83,9 @@ export default {
     },
     submitCard() {
       this.$router.push({ name: "addSJCard" });
+    },
+    toDetail(id){
+       this.$router.push({ name: "sureSJCardDetail" });
     }
   }
 };
